@@ -10,6 +10,16 @@
   margin-top: 2rem
   width: 35rem
 
+.card--error
+  background-color: rgb(240, 240, 240)
+  border: 2px solid rgba(255, 0, 0, 0.6)
+  border-radius: 2rem
+  font-size: 0
+  height: 20rem
+  margin: 0 auto
+  margin-top: 2rem
+  width: 35rem
+
 .card__title
   color: rgb(200, 200, 200)
   font-size: 2rem
@@ -88,6 +98,23 @@
   text-transform: uppercase
   vertical-align: top
 
+.input__date--error
+  border-color: rgba(255, 0, 0, 0.6)
+  box-shadow: inset 0 1px 2px rgba(0,0,0,0.3)
+  display: inline-block
+  font-size: 0.75rem
+  height: 1rem
+  margin-bottom: 1rem
+  padding-left: 1rem
+  text-align: center
+  text-transform: uppercase
+  vertical-align: middle
+  width: 10.75rem
+
+.input__date:focus
+  outline-color: rgb(52, 230, 250)
+  outline-offset: -1px
+
 .input__date
   border: 0
   box-shadow: inset 0 1px 2px rgba(0,0,0,0.3)
@@ -95,20 +122,17 @@
   font-size: 0.75rem
   height: 1rem
   margin-bottom: 1rem
+  padding-left: 1rem
   text-align: center
   text-transform: uppercase
   vertical-align: middle
-  width: 2rem
-
-.input__date:focus
-  outline-color: rgb(52, 230, 250)
-  outline-offset: -1px
+  width: 10.75rem
 
 .input__date--label
   display: inline-block
   font-size: 0.4rem
   padding-right: 0.5rem
-  padding-left: 8rem
+  padding-left: 6rem
   text-align: center
   text-transform: uppercase
   vertical-align: top

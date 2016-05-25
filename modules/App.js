@@ -12,7 +12,31 @@ export default React.createClass({
       },
       ccName: {
         hasError: false
+      },
+      date: {
+        hasError: false
+      },
+      allValid: {
+        hasError: false
       }
+    }
+  },
+  checkAllInputStates(){
+  if (this.state.ccNumber.hasError === true ||
+      this.state.cvvNumber.hasError === true ||
+      this.state.date.hasError === true ||
+      this.state.ccName.hasError === true) {
+
+      this.setState({
+        allValid: {
+          hasError: true
+        }
+      })} else {
+      this.setState({
+        allValid: {
+          hasError: false
+        }
+      })
     }
   },
   handleCCNumberInputChange(e){
@@ -29,6 +53,7 @@ export default React.createClass({
         }
       })
     }
+    this.checkAllInputStates();
   },
   handleCVVNumberInputChange(e){
     if (!Validator.isLength(e.target.value, {min:3, max: 3})) {
@@ -44,6 +69,7 @@ export default React.createClass({
         }
       })
     }
+    this.checkAllInputStates();
   },
   handleCCNameInputChange(e){
     if (!Validator.isLength(e.target.value, {min:2, max: 500})) {
@@ -59,11 +85,28 @@ export default React.createClass({
         }
       })
     }
+    this.checkAllInputStates();
+  },
+  handleDateInputChange(e){
+    if (!Validator.isAfter(e.target.value)) {
+      this.setState({
+        date: {
+          hasError: true
+        }
+      });
+    }else{
+      this.setState({
+        date: {
+          hasError: false
+        }
+      })
+    }
+    this.checkAllInputStates();
   },
   render() {
-    console.log(this.state.cvvNumber);
+    console.log(this.state.date);
     return (
-      <main className="card">
+      <main className={this.state.allValid.hasError? "card--error" : "card"}>
 
         <h1 className="card__title">
           <span className="card__title--firstWord">your</span>Bank
@@ -77,9 +120,8 @@ export default React.createClass({
           <input className={ this.state.cvvNumber.hasError? "input__cvvNumber--error" : "input__cvvNumber"} type="text" pattern="[0-9]{3}" onChange={this.handleCVVNumberInputChange} placeholder="xxx"/>
 
           <h3 className="input__date--label">good<br/>thru</h3>
-          <input className="input__date" type="text" pattern="[0-9]{2}" placeholder="mm"/>
-          <h3 className="input__date--slash">/</h3>
-          <input className="input__date" type="text" pattern="[0-9]{2}" placeholder="yy"/>
+          <input className={this.state.date.hasError? "input__date--error" : "input__date"} type="date" pattern="" onChange={this.handleDateInputChange} />
+
 
           <input className={ this.state.ccNumber.hasError? "input__name--error" : "input__name"} type="text" pattern="[A-Za-z]{2,}" onChange={this.handleCCNameInputChange} placeholder="your name"/>
           <img className="logo--visa" src="../visa.png"/>
