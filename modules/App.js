@@ -119,14 +119,15 @@ export default React.createClass({
           <h3 className="input__cvvNumber--label">cvv</h3>
           <input className={ this.state.cvvNumber.hasError? "input__cvvNumber--error" : "input__cvvNumber"} type="text" pattern="[0-9]{3}" onChange={this.handleCVVNumberInputChange} placeholder="xxx"/>
 
-          <h3 className="input__date--label">good<br/>thru</h3>
+          <h3 className="input__date--label">good thru</h3>
           <input className={this.state.date.hasError? "input__date--error" : "input__date"} type="date" pattern="" onChange={this.handleDateInputChange} />
 
 
-          <input className={ this.state.ccNumber.hasError? "input__name--error" : "input__name"} type="text" pattern="[A-Za-z]{2,}" onChange={this.handleCCNameInputChange} placeholder="your name"/>
+          <input className={ this.state.ccName.hasError? "input__name--error" : "input__name"} type="text" pattern="[A-Za-z]{2,}" onChange={this.handleCCNameInputChange} placeholder="your name"/>
           <img className="logo--visa" src="../visa.png"/>
 
         </form>
+        <p className="fakeNumber">A fake credit card number for testing purposes only is 4929054683031998.</p>
       </main>
     )
   }
